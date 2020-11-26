@@ -34,7 +34,7 @@ SELECT *
 FROM AssignedLectures
 WHERE numberOfSeats>=50;
 
--- Updating AssignedLEctures
+-- Updating AssignedLectures
 UPDATE AssignedLectures 
 SET lectureId = '00001'
 WHERE lectureId = '00216';
