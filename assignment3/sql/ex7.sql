@@ -21,6 +21,26 @@ SELECT * FROM UnresolvedCases;
 INSERT INTO UnresolvedCases
 VALUES ('jrodri89@uwo.ca', 'Juan', 'Rodriguez', 21, '123 Avenue Pkwy', 3, 42069);
 
+-- Second View: AssignedLectures
+-- Create View
+CREATE VIEW AssignedLectures AS
+SELECT L.*,C.*
+FROM Lecture L
+LEFT JOIN Classroom C
+ON C.roomNumber = L.classroomNumber;
+
+-- Getting Assigned lectures with classroom greater than 50
+SELECT *
+FROM AssignedLectures
+WHERE numberOfSeats>=50;
+
+-- Updating AssignedLEctures
+UPDATE AssignedLectures 
+SET lectureId = '00001'
+WHERE lectureId = '00216';
+
+
+
 
 -- Third View: GettingTooCloseThereBud
 
