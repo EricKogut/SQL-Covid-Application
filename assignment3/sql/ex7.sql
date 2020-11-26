@@ -20,3 +20,17 @@ SELECT * FROM UnresolvedCases;
 -- Updating the view
 INSERT INTO UnresolvedCases
 VALUES ('jrodri89@uwo.ca', 'Juan', 'Rodriguez', 21, '123 Avenue Pkwy', 3, 42069);
+
+
+-- Third View: GettingTooCloseThereBud
+
+-- Create view
+CREATE VIEW GettingTooCloseThereBud AS
+	SELECT *
+FROM Location_Distance
+WHERE distance < 0.00001;
+
+-- Getting count of rows where distance > -100
+SELECT COUNT(distance)
+FROM GettingTooCloseThereBud
+WHERE distance > -100
