@@ -34,3 +34,8 @@ WHERE distance < 0.00001;
 SELECT COUNT(distance)
 FROM GettingTooCloseThereBud
 WHERE distance > -100
+
+-- Update; it doesn't work
+UPDATE GettingTooCloseThereBud 
+SET date = 20-11-25
+WHERE studentEmail1 = 'Acuna@uwo.ca';
