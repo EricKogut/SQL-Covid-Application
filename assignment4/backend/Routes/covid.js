@@ -12,7 +12,7 @@ connection.query('SELECT * FROM Student', function (err, rows, fields) {
    res.send(rows[0]);
   })
    
-connection.end();
+//connection.end();
  });
 
  //Get all the classrooms that has lecture assigned to it with a given number of seats 
@@ -38,6 +38,30 @@ router.get('/classrooms/:capacity', (req, res) => {
      });
 
 //POST for inserting a new lecture into the database 
+
+//GET a list of all the courses in which students can enroll 
+//Created a view called StudentPerCourse by joining Course, Lecture and Classroom 
+router.get('/available', (req,res)=>{
+    connection.connect((error)=>{
+        if(!error){
+            console.log("Database Connected!");
+        }else{
+            console.log("Connection to Database failed \n Error: " + JSON.stringify(error,undefined,2));
+        }
+    });
+
+    connection.query('SELECT * FROM StudentPerCourse WHERE numberOfSeats>=numberOfStudents', function (err, rows, fields) {
+        if (err) throw err
+         res.send(rows);
+        })
+
+});
+
+//POST for updating enrollment and courses 
+// numberOfStudents++
+
+
+
 
 
 
