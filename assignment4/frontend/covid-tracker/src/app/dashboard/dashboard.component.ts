@@ -17,15 +17,17 @@ export class DashboardComponent implements OnInit {
 
 
 
-  // Execute this HTTP request when the route loads
   ngOnInit() {
+    console.log("initializing")
     this.covidService.test()
     .subscribe(data => {
-       console.log(data)
-    });
+       console.log(data, "is the data")
+    },
+    (e) => console.log(e) );
 
 
-});
+
+};
 
 }
 
