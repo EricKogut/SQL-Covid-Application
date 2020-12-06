@@ -11,9 +11,8 @@ import { CovidService  } from '../covid.service';
 export class DashboardComponent implements OnInit {
 
   constructor(private covidService: CovidService) { }
-  baseURL = 'http://localhost:5000'
 
-  message: String
+  message: String;
 
 
 
@@ -21,7 +20,7 @@ export class DashboardComponent implements OnInit {
     console.log("initializing")
     this.covidService.test()
     .subscribe(data => {
-       console.log(data, "is the data")
+       console.log(data)
     },
     (e) => console.log(e) );
 

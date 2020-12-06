@@ -9,6 +9,7 @@ export class CovidService {
   constructor(private http: HttpClient) {}
   test(){
     //Getting all available course codes
-    return this.http.get<any[]>(baseUrl+"/")
-  }
+    return this.http.get<any[]>(baseUrl+"/api/");
+  };
+
 }
