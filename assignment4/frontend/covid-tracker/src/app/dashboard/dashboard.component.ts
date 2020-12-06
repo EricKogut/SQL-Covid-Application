@@ -17,15 +17,6 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log("initializing")
-    this.covidService.test()
-    .subscribe(data => {
-       console.log(data)
-    },
-    (e) => console.log(e) );
-
-
-
 };
 
 }

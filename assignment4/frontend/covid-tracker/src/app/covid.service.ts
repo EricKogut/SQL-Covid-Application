@@ -12,4 +12,9 @@ export class CovidService {
     return this.http.get<any[]>(baseUrl+"/api/");
   };
 
+  // Get available classroom list to show to the professor
+  getClassroom(capacity: string){
+    return this.http.get<any[]>(baseUrl+"/api/classrooms/"+ capacity);
+  };
+
 }
