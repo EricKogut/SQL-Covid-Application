@@ -6,18 +6,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ScheduleLecturesComponent } from './schedule-lectures/schedule-lectures.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import {RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    ScheduleLecturesComponent
+    ScheduleLecturesComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot([
+      {path: 'schedule', component: ScheduleLecturesComponent },
+      {path: 'login', component: DashboardComponent },
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

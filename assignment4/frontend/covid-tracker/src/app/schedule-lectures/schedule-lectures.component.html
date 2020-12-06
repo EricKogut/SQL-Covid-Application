@@ -2,9 +2,23 @@
 
 <h3>Please enter the number of seats required for the lecture here below:</h3>
 <div>
-    <label>Number of Seats: </label>
+    <h4> Please enter the lecture information here: </h4>
+    <label>Start Time: </label>
+    <input [(ngModel)] = "startTime" type="text" placeholder="Lecture Start Time">
+
+    <label>End Time: </label>
+    <input [(ngModel)] = "endTime" type="text" placeholder="Lecture End Time">
+
+    <label>LectureID: </label>
+    <input [(ngModel)] = "lectureID" type="text" placeholder="lectureID">
+
+    <label>CourseID: </label>
+    <input [(ngModel)] = "courseID" type="text" placeholder="CourseID">
+    
+    <label>Number of Seats Required: </label>
     <input [(ngModel)] = "seats" type="text" placeholder="Number of seats required">
-    </div>
+   
+</div>
 
     <button (click) = "look()">Search!</button>
 <div>
@@ -14,6 +28,6 @@
         <h3>Here is a list of classrooms available based on your search. Please select the classroom for which you want to schedule a lecture for</h3>
         <ul *ngFor = "let r of result; let i = index">
             <li>Classroom Number: {{r.classroomNumber}} , Building Name: {{r.buildingName}}, Number of Seats: {{r.numberOfSeats}}</li>   
-             <li><button>Select!</button></li> 
+             <li><button>Schedule at this class!</button></li> 
         </ul>
     </div>

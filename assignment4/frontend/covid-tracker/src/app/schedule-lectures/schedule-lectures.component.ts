@@ -9,6 +9,10 @@ import { CovidService } from '../covid.service';
 export class ScheduleLecturesComponent implements OnInit {
  seats = '';
  result: any;
+ startTime = '';
+ endTime = '';
+ courseID = '';
+ lectureID = '';
   
  
  constructor(private covidservice:CovidService ) { }
