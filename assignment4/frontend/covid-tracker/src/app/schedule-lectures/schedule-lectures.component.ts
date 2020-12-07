@@ -42,14 +42,17 @@ export class ScheduleLecturesComponent implements OnInit {
 
 
   loadTime(){
+  
     this.startTime = `${this.startTimeH}:${this.startTimeM}:${this.startTimeS}`;
     this.endTime = `${this.endTimeH}:${this.endTimeM}:${this.endTimeS}`;
+    
   }
 
   // log(){
   //   this.loadIDs()
   // }
 
+  //courseIDS
   loadIDs(){
     this.covidservice
       .getCourseIDs()
@@ -71,6 +74,11 @@ export class ScheduleLecturesComponent implements OnInit {
   }
 
   look() {
+    // only numbers 
+    if(!this.seats){
+      alert("The value for number of seats can not be empty!");
+      return;
+    }
     this.covidservice.getClassroom(this.seats).subscribe(
       (response) => {
         this.result = response;
@@ -84,18 +92,15 @@ export class ScheduleLecturesComponent implements OnInit {
 
   insertLecture(classNo) {
     this.classroomNumber = classNo;
+    var numbers = /^[0-9]+$/;
 
-    this.loadTime()
-
-    console.log(this.classroomNumber);
-    console.log(this.lectureID)
-    console.log(this.courseID)
-    console.log(this.startTime)
-    console.log(this.endTime)
-
- 
-
-    this.covidservice
+    if(!this.classroomNumber || !this.courseID){
+      alert("Please fill in all the inputs before searching");
+      return;
+    }
+    if(this.startTimeH.match(numbers) && this.startTimeM.match(numbers) && this.startTimeS.match(numbers) && this.endTimeH.match(numbers) && this.endTimeM.match(numbers) && this.endTimeS.match(numbers)){
+       this.loadTime()
+      this.covidservice
       .insertLecture(
         this.lectureID,
         this.startTime,
@@ -116,6 +121,11 @@ export class ScheduleLecturesComponent implements OnInit {
         (error) => {
           alert(error.error);
         }
+
+
       );
+  }else{
+    alert("Only numbers allowed for start and end time!");
+  }
   }
 }

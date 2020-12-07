@@ -13,10 +13,13 @@ export class SearchComponent implements OnInit {
   result: any;
   resultEnroll:any;
 
+  courseIDs: any;
+
 
   constructor(private covidService: CovidService) { }
 
   ngOnInit(): void {
+    this.loadIDs();
   }
 
 
@@ -34,15 +37,22 @@ export class SearchComponent implements OnInit {
 
     }else{
       //get search results by course name
+      // only alphabets
+      var letters = /^[A-Za-z]+$/;
+      if(this.courseName.match(letters)){
+        this.covidService.getSearchResultsCourseName(this.courseName).subscribe(response=>{
+          this.result =response;
+          console.log(response);
+      
+        }, error=>{
+          alert(error.error);
+      
+        });
+      }else{
+        alert("Only alphabets allowed! Pleas double check your inputs");
+      }
 
-      this.covidService.getSearchResultsCourseName(this.courseName).subscribe(response=>{
-        this.result =response;
-        console.log(response);
-    
-      }, error=>{
-        alert(error.error);
-    
-      });
+     
 
     }
 
@@ -84,6 +94,29 @@ export class SearchComponent implements OnInit {
   
     });
 
+  };
+
+
+
+  //courseIDS
+  loadIDs(){
+    this.covidService
+      .getCourseIDs()
+      .subscribe(
+        (response) => {
+         // console.log(response);
+          this.courseIDs = response;
+   
+          if (this.courseIDs.sqlMessage) {
+            alert(this.courseIDs.sqlMessage);
+          } else {
+           
+          }
+        },
+        (error) => {
+          alert(error.error);
+        }
+      );
   }
      
 

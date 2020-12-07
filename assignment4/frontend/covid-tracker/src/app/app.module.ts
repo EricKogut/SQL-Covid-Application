@@ -39,8 +39,7 @@ import { EnrollComponent } from './enroll/enroll.component';
       {path: 'schedule', component: ScheduleLecturesComponent },
       {path: 'login', component: LoginComponent },
       {path: 'search', component: SearchComponent},
-      {path: 'track', component: TrackComponent},
-      {path: 'enroll', component: EnrollComponent}
+      {path: 'track', component: TrackComponent}
     ]),
 
   ],

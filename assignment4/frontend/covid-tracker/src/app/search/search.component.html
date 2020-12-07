@@ -6,7 +6,11 @@
 
 <div>
   <label>Search by Course ID: </label>
-  <input [(ngModel)] = "courseID" type="text" class = "searchBox" placeholder="Course ID... ">
+  <datalist name="courseIDs" id="courseIDs">
+    <option *ngFor="let courseID of courseIDs">{{ courseID.courseID }}</option>
+</datalist>
+  <input [(ngModel)]="courseID" maxlength="5" type="number" id="" list="courseIDs"/>
+
   <label>    Search by Subject Name: </label>
   <input [(ngModel)] = "courseName" type="text" class = "searchBox" placeholder="Subject Code... ">
 
