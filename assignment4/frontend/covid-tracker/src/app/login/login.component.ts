@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CovidService} from "../covid.service";
+import {Router} from "@angular/router"
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,8 @@ export class LoginComponent implements OnInit {
 
   email;
   password;
-  constructor(private covidService: CovidService) { }
+  constructor(private covidService: CovidService,
+    private router: Router) { }
 
   handleEmail(term: string): void {this.email = term.replace(/[<={}()>/\\]/gi, "")}
   handlePassword(term: string): void {this.password = term.replace(/[<={}()>/\\]/gi, "")}
@@ -23,13 +25,15 @@ export class LoginComponent implements OnInit {
       {
         console.log("the result of the sign in is", result)
         if(result.length==0){
-          window.alert("wrong username pw combo")
+          window.alert("Wrong username password combo")
         }
         else{
           console.log("SETTING THE LOGGED IN TO TRUE")
           localStorage.setItem("isLoggedIn", "true")
           localStorage.setItem("email", this.email)
+
           window.location.reload(false)
+
         }
 
 
