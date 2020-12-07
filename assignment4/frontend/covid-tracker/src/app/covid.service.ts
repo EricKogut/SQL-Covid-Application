@@ -33,12 +33,20 @@ export class CovidService {
 
   reportCase(email: string) {
     return this.http.post<string>(baseUrl + "/api/case/" + email, null).pipe(
-      catchError(this.handleError('POST Case', ""))
+      catchError(this.handleError('POST Case', "Could not post case, your case is already in the database"))
     )
   }
 
   getCoincidence(email: string, compareTo: string) {
-    return this.http.get<any[]>(baseUrl + "/api/coincidence/" + email + "/" + compareTo);
+    return this.http.get<any[]>(baseUrl + "/api/coincidence/" + email + "/" + compareTo).pipe(
+      catchError(this.handleError('GET Coincidence', []))
+    );
+  }
+
+  getNotifications(email: string) {
+    return this.http.get<any[]>(baseUrl + '/api/notifications/' + email).pipe(
+      catchError(this.handleError('GET Notifs', []))
+    )
   }
 
   handleError<T>(operation = "operation", result?: T) {
