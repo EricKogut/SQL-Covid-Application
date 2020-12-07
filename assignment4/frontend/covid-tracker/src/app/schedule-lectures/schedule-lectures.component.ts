@@ -23,6 +23,8 @@ export class ScheduleLecturesComponent implements OnInit {
   endTime = `${this.endTimeH}:${this.endTimeM}:${this.endTimeS}`;
 
   courseID = '';
+  courseIDs: any;
+
   lectureID = '';
   classroomNumber: any;
 
@@ -32,6 +34,9 @@ export class ScheduleLecturesComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadTime()
+    this.loadIDs()
+
+
     
   }
 
@@ -41,11 +46,28 @@ export class ScheduleLecturesComponent implements OnInit {
     this.endTime = `${this.endTimeH}:${this.endTimeM}:${this.endTimeS}`;
   }
 
-  log(){
-    this.loadTime()
-    console.log(this.startTimeH)
-    console.log(this.endTime)
-    console.log(this.startTime)
+  // log(){
+  //   this.loadIDs()
+  // }
+
+  loadIDs(){
+    this.covidservice
+      .getCourseIDs()
+      .subscribe(
+        (response) => {
+          console.log(response);
+          this.courseIDs = response;
+   
+          if (this.courseIDs.sqlMessage) {
+            alert(this.courseIDs.sqlMessage);
+          } else {
+           
+          }
+        },
+        (error) => {
+          alert(error.error);
+        }
+      );
   }
 
   look() {

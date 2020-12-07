@@ -14,6 +14,10 @@ ul {
     
     
     border: solid;
-    border-color: rgb(227, 87, 255);
+    border-color: rgb(226, 117, 253);
     border-width: 1px;
+}
+
+h2{
+    color: rgb(226, 117, 253);
 }
