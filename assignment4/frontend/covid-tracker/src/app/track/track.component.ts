@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { FormControl } from '@angular/forms';
 import { CovidService } from '../covid.service';
 
@@ -8,16 +9,20 @@ import { CovidService } from '../covid.service';
   styleUrls: ['./track.component.css']
 })
 export class TrackComponent implements OnInit {
+
   name = new FormControl('PetitY899@uwo.ca'); // For demonstration
   response: string;
   common: any[];
+  user: string
 
   notifications: any[];
 
   constructor(private covidService: CovidService) { }
 
   ngOnInit(): void {
+    this.user = localStorage.getItem('user')
   }
+
 
   getCoincidence(): void {
     this.common = [];
@@ -31,8 +36,4 @@ export class TrackComponent implements OnInit {
   getNotifications(): void {
     this.covidService.getNotifications(localStorage.getItem('email')).subscribe((x) => { this.notifications = x}, null, () => {console.log(this.notifications)});
   }
-
-
-
-
 }

@@ -212,7 +212,7 @@ router.get('/available', (req,res)=>{
         }
     });
 
-    const queryString = 'SELECT C.courseName, C.description, C.numberOfStudents, Cl.numberOfSeats, L.startTime, L.endTime FROM Course C JOIN Lecture L ON C.courseID = L.courseID JOIN Classroom Cl ON L.classroomNumber = Cl.roomNumber WHERE Cl.numberOfSeats>=C.numberOfStudents';
+    const queryString = 'SELECT C.courseName, C.description, C.numberOfStudents, Cl.numberOfSeats, L.startTime, L.endTime, C.courseID FROM Course C JOIN Lecture L ON C.courseID = L.courseID JOIN Classroom Cl ON L.classroomNumber = Cl.roomNumber WHERE Cl.numberOfSeats>=C.numberOfStudents';
 
     connection.query(queryString, function (err, rows, fields) {
         !err ? res.send(rows) : res.json(err);
@@ -305,6 +305,7 @@ router.get('/search/courseID/:courseID', (req,res)=>{
 //Get search results based on courseName
 
 router.get('/search/courseName/:courseName', (req,res)=>{
+  
     connection.connect((error)=>{
         if(!error){
             console.log("Database Connected!");
@@ -319,6 +320,26 @@ router.get('/search/courseName/:courseName', (req,res)=>{
         !err ? res.send(rows) : res.json(err);
         })
 
+});
+
+
+router.put('/signin/', (req, res) => {
+  console.log("SIGN IN CALLED")
+  console.log(req.body, "is the body")
+  connection.connect((error)=>{
+      if(!error){
+          console.log("Database Connected!");
+      }else{
+          console.log("Connection to Database failed \n Error: " + JSON.stringify(error,undefined,2));
+      }
+  });
+
+  connection.query(`SELECT studentEmail FROM Student WHERE studentEmail = ? AND lName = ?`, [req.body.email, req.body.password],
+  function (err, rows, fields) {
+      !err ? res.send(rows) : res.json(err);
+    });
+     
+ // connection.end();
 });
 
 

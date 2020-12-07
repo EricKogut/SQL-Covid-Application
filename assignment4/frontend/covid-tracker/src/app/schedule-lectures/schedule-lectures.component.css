@@ -1,0 +1,23 @@
+input{
+    border-radius: 20px;
+}
+
+button{
+    border-radius: 20px;
+}
+
+ul {
+    list-style-type: none;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    
+    
+    border: solid;
+    border-color: rgb(226, 117, 253);
+    border-width: 1px;
+}
+
+h2{
+    color: rgb(226, 117, 253);
+}

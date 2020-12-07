@@ -1,33 +1,176 @@
-<h2>Schedule Lectures!</h2>
+<div class="container">
+  <h1>Schedule Lecture</h1>
 
-<h3>Please enter the number of seats required for the lecture here below:</h3>
-<div>
-    <h4> Please enter the lecture information here: </h4>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <h2> <b>STEP 1:</b> Enter Lecture Information Below </h2>
+     
+
+        <!-- <button (click)="log()">click</button> -->
+
+        <div class="mb-3">
+          <label class="form-label">Start Time:</label>
+          <div class="row" style="margin-left: 1px">
+            <div class="mb-3">
+              <input
+                [(ngModel)]="startTimeH"
+                name="startTimeH"
+                type="text"
+                placeholder="H"
+                class="form-control"
+                id="startTimeH"
+              />
+            </div>
+            <div class="mb-3">
+              <input
+                [(ngModel)]="startTimeM"
+                name="startTimeM"
+                type="text"
+                placeholder="M"
+                class="form-control"
+                id="startTimeM"
+              />
+            </div>
+
+            <div class="mb-3">
+              <input
+                [(ngModel)]="startTimeS"
+                name="startTimeS"
+                type="text"
+                placeholder="S"
+                class="form-control"
+                id="startTimeS"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">End Time:</label>
+          <div class="row" style="margin-left: 1px">
+            <div class="mb-3">
+              <input
+                [(ngModel)]="endTimeH"
+                name="endTimeH"
+                type="text"
+                placeholder="H"
+                class="form-control"
+                id="endTimeH"
+              />
+            </div>
+            <div class="mb-3">
+              <input
+                [(ngModel)]="endTimeM"
+                name="endTimeM"
+                type="text"
+                placeholder="M"
+                class="form-control"
+                id="endTimeM"
+              />
+            </div>
+
+            <div class="mb-3">
+              <input
+                [(ngModel)]="endTimeS"
+                name="endTimeS"
+                type="text"
+                placeholder="S"
+                class="form-control"
+                id="endTimeS"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">LectureID:</label>
+          <input  [(ngModel)]="lectureID" maxlength="5" type="text" class="form-control" id="" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">CourseID:</label>
+         
+
+          <datalist name="courseIDs" id="courseIDs">
+            <option *ngFor="let courseID of courseIDs">{{ courseID.courseID }}</option>
+          </datalist>
+
+          <input [(ngModel)]="courseID" maxlength="5" type="text" class="form-control" id="" list="courseIDs"/>
+
+
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Number of Seats Required:</label>
+          <input
+            [(ngModel)]="seats"
+            name="seats"
+            type="text"
+            placeholder="Number of seats required"
+            class="form-control"
+            id="seats"
+          />
+        </div>
+        <button class="btn" style="background-color: rgb(226, 117, 253); color: white;" (click)="look()">Search</button>
+      </div>
+      <div class="col-sm">
+           
+
+            
+        <div>
+            <div>
+                <h2> <b>STEP 2:</b> Select Classroom For Your Lecture </h2>
+              <h3>
+                Classrooms available to seat {{ seats }} students
+              </h3>
+              <div style="overflow: auto; height:400px;">
+
+              <ul *ngFor="let r of result; let i = index">
+                <li>
+                  Classroom Number: {{ r.classroomNumber }}  Building Name:
+                  {{ r.buildingName }} Number of Seats: {{ r.numberOfSeats }}
+                </li>
+                <li>
+                  <button class="btn btn-secondary" style="color: white;" (click)="insertLecture(r.classroomNumber)">
+                    Schedule at this class!
+                  </button>
+                </li>
+              </ul>
+            </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- <div>
+    <h4>Please enter the lecture information here:</h4>
     <label>Start Time: </label>
-    <input [(ngModel)] = "startTime" type="text" placeholder="Lecture Start Time">
+    <input
+      [(ngModel)]="startTime"
+      type="text"
+      placeholder="Lecture Start Time"
+    />
 
     <label>End Time: </label>
-    <input [(ngModel)] = "endTime" type="text" placeholder="Lecture End Time">
+    <input [(ngModel)]="endTime" type="text" placeholder="Lecture End Time" />
 
     <label>LectureID: </label>
-    <input [(ngModel)] = "lectureID" type="text" placeholder="lectureID">
+    <input [(ngModel)]="lectureID" type="text" placeholder="lectureID" /> 
 
     <label>CourseID: </label>
-    <input [(ngModel)] = "courseID" type="text" placeholder="CourseID">
-    
+    <input [(ngModel)]="courseID" type="text" placeholder="CourseID" />
+
     <label>Number of Seats Required: </label>
-    <input [(ngModel)] = "seats" type="text" placeholder="Number of seats required">
-   
-</div>
+    <input
+      [(ngModel)]="seats"
+      type="text"
+      placeholder="Number of seats required"
+    />
+  </div>
 
-    <button (click) = "look()">Search!</button>
-<div>
+  <button (click)="look()">Search!</button>
 
-
-    <div>
-        <h3>Here is a list of classrooms available based on your search. Please select the classroom for which you want to schedule a lecture for</h3>
-        <ul *ngFor = "let r of result; let i = index">
-            <li>Classroom Number: {{r.classroomNumber}} , Building Name: {{r.buildingName}}, Number of Seats: {{r.numberOfSeats}}</li>   
-             <li><button>Schedule at this class!</button></li> 
-        </ul>
-    </div>
+  -->
+  
