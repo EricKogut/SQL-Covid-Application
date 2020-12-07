@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const connection = require('./connection');
 
-router.get('/coincidence/:self/:user', (req, _) => {
+router.get('/coincidence/:self/:user', (req, res) => {
   const connection = mysql.createConnection({
     /* Avoid a lot of errors by creating a connection local to function */
       host: 'project-3309.c0vk0iwpo9it.us-east-2.rds.amazonaws.com',
