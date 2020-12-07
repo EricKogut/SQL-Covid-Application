@@ -8,8 +8,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ScheduleLecturesComponent } from './schedule-lectures/schedule-lectures.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import {RouterModule } from '@angular/router';
+import { LandingComponent } from './landing/landing.component';
 import { SearchComponent } from './search/search.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +26,9 @@ import { SearchComponent } from './search/search.component';
     RouterModule.forRoot([
       {path: 'schedule', component: ScheduleLecturesComponent },
       {path: 'login', component: DashboardComponent },
-      {path: 'search', component: SearchComponent}
+      {path: 'search', component: SearchComponent},
+      {path: 'home', component: LandingComponent },
+
     ])
   ],
   providers: [],
