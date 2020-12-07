@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormControl } from '@angular/forms';
 import { CovidService } from '../covid.service';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-track',
@@ -10,7 +11,10 @@ import { CovidService } from '../covid.service';
 })
 export class TrackComponent implements OnInit {
 
-  name = new FormControl('PetitY899@uwo.ca'); // For demonstration
+  name = new FormControl('PetitY899@uwo.ca', [
+    Validators.required,
+    Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
+  ]); // For demonstration
   response: string;
   common: any[];
   user: string
