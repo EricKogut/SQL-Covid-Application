@@ -13,9 +13,13 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit(): void {
     if(localStorage.getItem("isLoggedIn")){
-      
+      this.isLoggedIn = true;
 
     }
+  }
+  handleLogout(){
+    localStorage.removeItem("isLoggedIn")
+    this.isLoggedIn = false;
   }
 
 }

@@ -12,7 +12,7 @@
 
 
 <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-  <a class="navbar-brand" href="#" routerLink="">Covid Tracker</a>
+  <a class="navbar-brand" href="#" routerLink="/">Covid Tracker</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -20,9 +20,16 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
 
+    <span *ngIf = "!isLoggedIn">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/login">Login</a>
+        <a  class="nav-link" routerLink="/login">Login</a>
       </li>
+      </span>
+      <span *ngIf = "isLoggedIn">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a (click) = "handleLogout()" class="nav-link" routerLink="/login">Logout</a>
+          </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/register">Register</a>
       </li>
@@ -38,7 +45,8 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/search">Search for Classes</a>
       </li>
-
+    </ul>
+    </span>
     </ul>
   </div>
 </nav>
