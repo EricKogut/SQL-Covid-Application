@@ -104,16 +104,36 @@ router.post('/course/add', (req,res,next)=>{
         }else{
             console.log("Connection to Database failed \n Error: " + JSON.stringify(error,undefined,2));
         }
-    });
-
+    }); 
     let data  = [req.body.courseID, req.body.studentEmail ,1];
 
     connection.query('INSERT INTO Enrollment (courseID, studentEmail, currentlyEnrolled) VALUES (?,?,?)',
-    data, 
+     data, 
     function (err, rows, fields) {
         !err ? res.send(rows) : res.json(err);
       });
-  
+    
+});
+
+//Check if the user has already been enrolled 
+// if output is 1 then yes otherwise they can enroll into the course 
+router.post('/enrollment/check', (req,res,next)=>{
+    connection.connect((error)=>{
+        if(!error){
+            console.log("Database Connected!");
+        }else{
+            console.log("Connection to Database failed \n Error: " + JSON.stringify(error,undefined,2));
+        }
+    });
+    // check if already enrolled or not 
+const queryString = 'SELECT currentlyEnrolled FROM Enrollment WHERE courseID = ? AND studentEmail = ?' ;
+
+    connection.query(queryString,
+    [req.body.courseID, req.body.studentEmail], 
+    function (err, rows, fields) {
+        !err ? res.send(rows) : res.json(err);
+      });
+
     
 });
 
