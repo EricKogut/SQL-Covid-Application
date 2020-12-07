@@ -53,11 +53,11 @@ export class SearchComponent implements OnInit {
     this.courseID = input;
 
     // check if already enrolled 
-    this.covidService.checkIfAlreadyEnrolled(this.courseID,'EmeryAcevedo@uwo.ca').subscribe(response=>{
+    this.covidService.checkIfAlreadyEnrolled(this.courseID,localStorage.getItem('email')).subscribe(response=>{
       console.log(response);
       this.resultEnroll = response;
      if(this.resultEnroll.length == 0){
-      this.covidService.enrollForThisCourse(this.courseID,'EmeryAcevedo@uwo.ca').subscribe(response =>{
+      this.covidService.enrollForThisCourse(this.courseID,localStorage.getItem('email')).subscribe(response =>{
         console.log(response);
       this.updateCourseRelation(this.courseID);
       })
