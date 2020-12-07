@@ -3,7 +3,9 @@ const express = require('express');
 const router = express.Router();
 const connection = require('./connection');
 
-router.get('/coincidence/:self/:user', (req, _) => {
+connection.connect();
+
+router.get('/coincidence/:self/:user', (req, res) => {
   const connection = mysql.createConnection({
     /* Avoid a lot of errors by creating a connection local to function */
       host: 'project-3309.c0vk0iwpo9it.us-east-2.rds.amazonaws.com',
@@ -15,7 +17,6 @@ router.get('/coincidence/:self/:user', (req, _) => {
     const you = req.params.self;
     const them = req.params.user;
 
-    connection.connect();
 
     connection.query(`CREATE VIEW A AS SELECT courseID FROM Enrollment WHERE studentEmail = '${you}'`);
     connection.query(`CREATE VIEW B AS SELECT courseID FROM Enrollment WHERE studentEmail = '${them}'`);
@@ -61,11 +62,13 @@ router.post('/case/:name', (req, res) => {
   const second = today.getSeconds();
 
   const time = `${hour}:${minute}:${second}`;
+  let failed = false;
 
   connection.connect();
 
   connection.query(`INSERT INTO COVID_Case VALUES ('${username}', '${status}', '${time}', '${date}', null)`, (err, rows, fields) => {
     if (err) {
+      failed = true;
       switch(err.errno) {
         case 1062:
           res.status(400).send('That entry currently exists in the case database');
@@ -109,7 +112,7 @@ router.post('/case/:name', (req, res) => {
     })
   })
 
-  res.send(added.length);
+  if (!failed) { res.send(`${added.length}`); }
 
   })
 })
@@ -117,13 +120,12 @@ router.post('/case/:name', (req, res) => {
 router.get('/notifications/:name', (req, res) =>  {
   // Route to retrieve notifications for a particular user as per TODO #A
 
-  connection.connect();
+  let sent = [];
 
-  connection.query(`SELECT * FROM Notification WHERE studentEmail_notif = ${req.params.name}`, (err, rows, fields) => {
+  connection.query(`SELECT * FROM Notification WHERE studentEmail_notif = '${req.params.name}'`, (err, rows, fields) => {
     res.send(rows);
   }) 
 
-  connection.end();
 })
 
 // GET all students 

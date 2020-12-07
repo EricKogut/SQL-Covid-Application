@@ -1,0 +1,17 @@
+.push-button-3d {
+  box-shadow: 0 4px #c1a23c;
+  color: #5e4800;
+  background-color: #ffd95e;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+  font-weight: 900;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.push-button-3d:active {
+  box-shadow: 0 1px #c1a23c;
+  transform: translateY(3px);
+}
