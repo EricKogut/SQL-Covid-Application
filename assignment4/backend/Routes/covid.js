@@ -37,6 +37,27 @@ router.get('/classrooms/:capacity', (req, res) => {
    // connection.end();
      });
 
+
+// GET a list of all the course ids 
+// this would be displayed as a dragdown option for user to select from
+router.get('/courseID', (req, res) => {
+
+    connection.connect((error)=>{
+        if(!error){
+            console.log("Database Connected!");
+        }else{
+            console.log("Connection to Database failed \n Error: " + JSON.stringify(error,undefined,2));
+        }
+    });
+
+    connection.query('SELECT courseID FROM Course',
+    function (err, rows, fields) {
+        !err ? res.send(rows) : res.json(err);
+      });
+       
+   // connection.end();
+     });
+
 //POST for inserting a new lecture into the database 
 router.post('/lecture/add', (req,res,next)=>{
     connection.connect((error)=>{
@@ -74,6 +95,7 @@ router.get('/available', (req,res)=>{
 });
 
 //POST for updating enrollment and courses 
+
 // numberOfStudents++
 
 
