@@ -1,27 +1,21 @@
 const express = require('express');
 var mysql = require('mysql')
 var cors = require('cors')
+const bodyParser = require('body-parser');
+
 
 
 
 const app = express();
 app.use(cors());
+app.use(bodyParser.json());
+
 
 
 const covidRoute = require('../backend/Routes/covid');
 app.use('/api', covidRoute);
 
-// app.use("/",function(req,res, next){
-//   var connection = mysql.createConnection({
-//     host: 'project-3309.c0vk0iwpo9it.us-east-2.rds.amazonaws.com',
-//     user: 'admin',
-//     password: 'pa$$word',
-//     database: '3309'
-//   })
-//   connection.connect();
-// next();
-// connection.end();
-// })
+
 
 const port = process.env.port || 3000;
 

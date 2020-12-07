@@ -1,0 +1,38 @@
+<h3>Search for Courses:</h3>
+
+<div>
+    <label>Search by CourseID: </label>
+    <input [(ngModel)] = "courseID" type="text" class = "searchBox" placeholder="Enter Subject Name">
+
+<h3> OR </h3>
+
+    <label>Search by Course Name: </label>
+    <input [(ngModel)] = "courseName" type="text" class = "searchBox" placeholder="Enter Course Code">
+
+    <button (click) = "getSearchResults()">Submit!</button>
+</div>
+
+
+<h3>Here are your Results!</h3>
+<table>
+    <tr>
+       <th>index</th>
+      <th>courseID</th>
+      <th>Course Name</th>
+      <th>Description</th>
+      <th>Number of Students Enrolled</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+
+    </tr>
+    <tr *ngFor = "let x of result; let i = index">
+      <td>{{i}}</td>
+      <td>{{x.courseID}}</td>
+      <td>{{x.courseName}}</td>
+      <td>{{x.description}}</td>
+      <td>{{x.numberOfStudents}}</td>
+      <td>{{x.startTime}}</td>
+      <td>{{x.endTime}}</td>
+    </tr>
+    
+  </table>
