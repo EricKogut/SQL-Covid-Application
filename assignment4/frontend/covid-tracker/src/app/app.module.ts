@@ -10,13 +10,15 @@ import { NavigationComponent } from './navigation/navigation.component';
 import {RouterModule } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
 import { SearchComponent } from './search/search.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     ScheduleLecturesComponent,
     NavigationComponent,
-    SearchComponent
+    SearchComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,7 @@ import { SearchComponent } from './search/search.component';
     RouterModule.forRoot([
       {path: '', component: LandingComponent },
       {path: 'schedule', component: ScheduleLecturesComponent },
-      {path: 'login', component: DashboardComponent },
+      {path: 'login', component: LoginComponent },
       {path: 'search', component: SearchComponent},
 
 

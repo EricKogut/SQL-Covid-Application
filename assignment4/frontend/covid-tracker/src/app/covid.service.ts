@@ -27,7 +27,7 @@ export class CovidService {
     return this.http.get<any[]>(baseUrl+"/api/search/courseName/"+ courseName);
   };
 
-  //inserting a new lecture 
+  //inserting a new lecture
   insertLecture(lectureID:string, startTime: string, endTime: string, courseID: string, classroomNumber: string){
   return this.http.post(baseUrl+'/api/lecture/add', {
     "lectureID": lectureID,
@@ -37,5 +37,9 @@ export class CovidService {
      "classroomNumber": classroomNumber
   })
   };
+  signIn(input){
+    return this.http.put<any[]>(baseUrl+"/api/signin/",input);
+
+  }
 
 }

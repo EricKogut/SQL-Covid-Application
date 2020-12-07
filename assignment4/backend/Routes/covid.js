@@ -303,6 +303,7 @@ router.get('/search/courseID/:courseID', (req,res)=>{
 //Get search results based on courseName
 
 router.get('/search/courseName/:courseName', (req,res)=>{
+  
     connection.connect((error)=>{
         if(!error){
             console.log("Database Connected!");
@@ -317,6 +318,26 @@ router.get('/search/courseName/:courseName', (req,res)=>{
         !err ? res.send(rows) : res.json(err);
         })
 
+});
+
+
+router.put('/signin/', (req, res) => {
+  console.log("SIGN IN CALLED")
+  console.log(req.body, "is the body")
+  connection.connect((error)=>{
+      if(!error){
+          console.log("Database Connected!");
+      }else{
+          console.log("Connection to Database failed \n Error: " + JSON.stringify(error,undefined,2));
+      }
+  });
+
+  connection.query(`SELECT studentEmail FROM Student WHERE studentEmail = ? AND lName = ?`, [req.body.email, req.body.password],
+  function (err, rows, fields) {
+      !err ? res.send(rows) : res.json(err);
+    });
+     
+ // connection.end();
 });
 
 
