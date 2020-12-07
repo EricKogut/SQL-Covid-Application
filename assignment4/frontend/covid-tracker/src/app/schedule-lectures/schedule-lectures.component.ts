@@ -13,6 +13,9 @@ export class ScheduleLecturesComponent implements OnInit {
  endTime = '';
  courseID = '';
  lectureID = '';
+ classroomNumber:any;
+
+ resultLec: any;
   
  
  constructor(private covidservice:CovidService ) { }
@@ -30,4 +33,29 @@ export class ScheduleLecturesComponent implements OnInit {
 
   });
   };
+
+  insertLecture(classNo){
+
+    this.classroomNumber = classNo;
+    console.log(this.classroomNumber);
+    this.covidservice.insertLecture(this.lectureID, this.startTime, this.endTime, this.courseID,this.classroomNumber ).subscribe(response=>{
+      console.log(response);
+      this.resultLec =response;
+      if(this.resultLec.sqlMessage){
+        alert(this.resultLec.sqlMessage);
+
+      }else{
+        alert("Lecture Successfully added!");
+      }
+      
+  
+    }, error=>{
+      alert(error.error);
+  
+    });
+   
+  
+  };
+
+  
 }

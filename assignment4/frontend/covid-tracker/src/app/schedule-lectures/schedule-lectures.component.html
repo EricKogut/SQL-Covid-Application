@@ -28,6 +28,6 @@
         <h3>Here is a list of classrooms available based on your search. Please select the classroom for which you want to schedule a lecture for</h3>
         <ul *ngFor = "let r of result; let i = index">
             <li>Classroom Number: {{r.classroomNumber}} , Building Name: {{r.buildingName}}, Number of Seats: {{r.numberOfSeats}}</li>   
-             <li><button>Schedule at this class!</button></li> 
+             <li><button (click) = "insertLecture(r.classroomNumber)">Schedule at this class!</button></li> 
         </ul>
     </div>
