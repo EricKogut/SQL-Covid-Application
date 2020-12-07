@@ -37,7 +37,7 @@ import { EnrollComponent } from './enroll/enroll.component';
     RouterModule.forRoot([
       {path: '', component: LandingComponent },
       {path: 'schedule', component: ScheduleLecturesComponent },
-      {path: 'login', component: DashboardComponent },
+      {path: 'login', component: LoginComponent },
       {path: 'search', component: SearchComponent},
       {path: 'track', component: TrackComponent},
       {path: 'enroll', component: EnrollComponent}
