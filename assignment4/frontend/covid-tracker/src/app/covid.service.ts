@@ -27,4 +27,8 @@ export class CovidService {
     return this.http.get<any[]>(baseUrl+"/api/search/courseName/"+ courseName);
   };
 
+  reportCase(email: string) {
+    return this.http.get<any[]>(baseUrl + "/api/case" + email);
+  }
+
 }
