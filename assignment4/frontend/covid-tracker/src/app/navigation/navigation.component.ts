@@ -18,7 +18,8 @@ export class NavigationComponent implements OnInit {
     }
   }
   handleLogout(){
-    localStorage.removeItem("isLoggedIn")
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("email");
     this.isLoggedIn = false;
   }
 

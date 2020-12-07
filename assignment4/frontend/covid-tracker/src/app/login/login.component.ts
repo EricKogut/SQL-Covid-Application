@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
         else{
           console.log("SETTING THE LOGGED IN TO TRUE")
           localStorage.setItem("isLoggedIn", "true")
+          localStorage.setItem("email", this.email)
           window.location.reload(false)
         }
 
