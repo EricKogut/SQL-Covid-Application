@@ -24,10 +24,11 @@ import { SearchComponent } from './search/search.component';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
+      {path: '', component: LandingComponent },
       {path: 'schedule', component: ScheduleLecturesComponent },
       {path: 'login', component: DashboardComponent },
       {path: 'search', component: SearchComponent},
-      {path: 'home', component: LandingComponent },
+
 
     ])
   ],
