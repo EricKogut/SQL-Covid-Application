@@ -58,6 +58,27 @@ router.get('/courseID', (req, res) => {
    // connection.end();
      });
 
+// GET "signin"
+
+router.get('/signin', (req, res) => {
+
+
+    connection.connect((error)=>{
+        if(!error){
+            console.log("Database Connected!");
+        }else{
+            console.log("Connection to Database failed \n Error: " + JSON.stringify(error,undefined,2));
+        }
+    });
+
+    connection.query(`SELECT studentEmail FROM Student WHERE studentEmail = ?`,req.query.email,
+    function (err, rows, fields) {
+        !err ? res.send(rows) : res.json(err);
+      });
+       
+   // connection.end();
+     });
+
 //POST for inserting a new lecture into the database 
 router.post('/lecture/add', (req,res,next)=>{
     connection.connect((error)=>{

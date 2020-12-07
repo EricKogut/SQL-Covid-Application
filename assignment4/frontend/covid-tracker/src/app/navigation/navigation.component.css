@@ -1,0 +1,12 @@
+nav{
+    background-color: rgb(255, 0, 128);
+    
+    border-radius: 20px;
+    margin: 20px;
+}
+
+a{
+    color: #fff;
+    border-radius: 20px;
+    margin: 5px;
+}
