@@ -158,6 +158,43 @@ const queryString = 'SELECT currentlyEnrolled FROM Enrollment WHERE courseID = ?
 });
 
 
+//Get search results based on courseID
+
+router.get('/search/courseID/:courseID', (req,res)=>{
+    connection.connect((error)=>{
+        if(!error){
+            console.log("Database Connected!");
+        }else{
+            console.log("Connection to Database failed \n Error: " + JSON.stringify(error,undefined,2));
+        }
+    });
+
+    const queryString = 'SELECT * FROM searchTable WHERE courseID = ?';
+
+    connection.query(queryString,[req.params.courseID], function (err, rows, fields) {
+        !err ? res.send(rows) : res.json(err);
+        })
+
+});
+
+//Get search results based on courseName
+
+router.get('/search/courseName/:courseName', (req,res)=>{
+    connection.connect((error)=>{
+        if(!error){
+            console.log("Database Connected!");
+        }else{
+            console.log("Connection to Database failed \n Error: " + JSON.stringify(error,undefined,2));
+        }
+    });
+
+    const queryString = 'SELECT * FROM searchTable WHERE courseName = ?';
+
+    connection.query(queryString,[req.params.courseName], function (err, rows, fields) {
+        !err ? res.send(rows) : res.json(err);
+        })
+
+});
 
 
 
