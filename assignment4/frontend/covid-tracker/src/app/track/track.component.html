@@ -1,37 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+        <button class="push-button-3d" (click)="report()">I HAVE COVID-19</button>
 
-<button class="push-button-3d" (click)="report()">Report Case</button>
+        <div *ngIf="response">
+          {{ response }}
+        </div>
 
-
-<div *ngIf="response">
-    {{ response }}
-</div>
-
-<br>
-
-<label>
-    User:
-    <input type="text" [formControl]="name">
-</label>
-<button class="push-button-3d" (click)="getCoincidence()">Get Coincidence with {{ name.value }}</button>
-
-<div *ngIf="common">
-    <table>
-        <td>Shared course IDs</td>
-        <tr *ngFor="let item of common">
-            <td>{{item['courseID']}}</td>
-        </tr>
-    </table>
-</div>
-
-<button class="push-button-3d" (click)="getNotifications()">See Notifications</button>
-
-<table>
-    <div *ngIf="!notifications">No Notifications</div>
-    <div *ngIf="notifications">
-        <tr *ngFor="let notification of notifications">
-            <td>{{notification['idNotification']}}</td><td>{{notification['message']}}</td> 
-        </tr>
     </div>
-</table>
+
+
+    <div class="col-sm">
+
+
+        <button class="push-button2-3d" (click)="getNotifications()">
+            See Notifications
+          </button>
+          
+          <table>
+            <div *ngIf="!notifications">No Notifications</div>
+            <div *ngIf="notifications">
+              <tr *ngFor="let notification of notifications">
+                <td>{{ notification["idNotification"] }}</td>
+                <td>{{ notification["message"] }}</td>
+              </tr>
+            </div>
+          </table>
+    </div>
+
+    <div class="col-sm">
+
+        <label>
+            User:
+            <input type="text" [formControl]="name" />
+          </label>
+          <button class="push-button2-3d" (click)="getCoincidence()">
+            Get Coincidence with {{ name.value }}
+          </button>
+          
+          <div *ngIf="common">
+            <table>
+              <td>Shared course IDs</td>
+              <tr *ngFor="let item of common">
+                <td>{{ item["courseID"] }}</td>
+              </tr>
+            </table>
+          </div>
+    </div>
+
+ 
+  </div>
+</div>
+
+
 
 

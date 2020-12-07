@@ -21,10 +21,16 @@
     <ul class="navbar-nav mr-auto">
 
     <span *ngIf = "!isLoggedIn">
+    
       <li class="nav-item">
         <a  class="nav-link" routerLink="/login">Login</a>
       </li>
+  
       </span>
+
+
+
+
       <span *ngIf = "isLoggedIn">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">

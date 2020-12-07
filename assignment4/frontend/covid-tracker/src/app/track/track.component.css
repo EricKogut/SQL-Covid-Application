@@ -1,7 +1,7 @@
 .push-button-3d {
-  box-shadow: 0 4px #c1a23c;
-  color: #5e4800;
-  background-color: #ffd95e;
+  box-shadow: 0 4px #c13cb65d;
+  color: #ffffff;
+  background-color: #e63789;
   text-transform: uppercase;
   padding: 10px 20px;
   border-radius: 5px;
@@ -9,9 +9,35 @@
   font-weight: 900;
   cursor: pointer;
   letter-spacing: 1px;
+  border-radius: 20px;
 }
 
 .push-button-3d:active {
-  box-shadow: 0 1px #c1a23c;
+  box-shadow: 0 1px #ff0000;
   transform: translateY(3px);
+  border-radius: 20px;
 }
+
+
+
+
+.push-button2-3d {
+  box-shadow: 0 4px #c13cb638;
+  color: #ffffff;
+  background-color: #e637898a;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+  font-weight: 900;
+  cursor: pointer;
+  letter-spacing: 1px;
+  border-radius: 20px;
+}
+
+.push-button2-3d:active {
+  box-shadow: 0 1px #ff000059;
+  transform: translateY(3px);
+  border-radius: 20px;
+}
+
