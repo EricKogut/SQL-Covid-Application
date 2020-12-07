@@ -10,23 +10,40 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">UWO COVID TRACKER</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a routerLink="/login">Login</a></li>
-      <li><a routerLink="/register">Register</a></li>
-      <li><a routerLink="/schedule">Schedule Lecture</a></li>
-      <li><a routerLink="/enroll">Enroll for a class</a></li>
-      <li><a routerLink="/track">Track</a></li>
-      <li><a routerLink="/search">Search Courses</a></li>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+  <a class="navbar-brand" href="#" routerLink="/login">Covid Tracker</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/register">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/schedule">Schedule Lecture</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/enroll">Enroll in a Class</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/track">Track</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin">Admin</a>
+      </li>
+
     </ul>
   </div>
 </nav>
-  
+
+
 
 </body>
 </html>
