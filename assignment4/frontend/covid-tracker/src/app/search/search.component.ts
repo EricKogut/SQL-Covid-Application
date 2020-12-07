@@ -8,6 +8,7 @@ import {CovidService } from '../covid.service';
 })
 export class SearchComponent implements OnInit {
 
+  progressValue = 0;
   courseName= '';
   courseID = '';
   result: any;
@@ -20,15 +21,20 @@ export class SearchComponent implements OnInit {
 
 
   getSearchResults(){
+    console.log("Getting he search results")
+    for(var i =0; i<100; i++){
+      this.progressValue = i
+      console.log(this.progressValue)
+    }
     if(this.courseName == ''){
       //get search results by courseID
       this.covidService.getSearchResultsCourseID(this.courseID).subscribe(response=>{
         this.result =response;
         console.log(response);
-    
+
       }, error=>{
         alert(error.error);
-    
+
       });
 
     }else{
@@ -37,10 +43,10 @@ export class SearchComponent implements OnInit {
       this.covidService.getSearchResultsCourseName(this.courseName).subscribe(response=>{
         this.result =response;
         console.log(response);
-    
+
       }, error=>{
         alert(error.error);
-    
+
       });
 
     }
