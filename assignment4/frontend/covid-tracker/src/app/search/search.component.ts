@@ -11,6 +11,7 @@ export class SearchComponent implements OnInit {
   courseName= '';
   courseID = '';
   result: any;
+  resultEnroll:any;
 
 
   constructor(private covidService: CovidService) { }
@@ -46,5 +47,46 @@ export class SearchComponent implements OnInit {
     }
 
   };
+
+    enroll(input){
+
+    this.courseID = input;
+
+    // check if already enrolled 
+    this.covidService.checkIfAlreadyEnrolled(this.courseID,localStorage.getItem('email')).subscribe(response=>{
+      console.log(response);
+      this.resultEnroll = response;
+     if(this.resultEnroll.length == 0){
+      this.covidService.enrollForThisCourse(this.courseID,localStorage.getItem('email')).subscribe(response =>{
+        console.log(response);
+      this.updateCourseRelation(this.courseID);
+      })
+     }
+     else{
+       alert("Error!You have already enrolled for this course!");
+     }
+  
+    }, error=>{
+      alert(error.error);
+  
+    });
+
+
+  };
+
+  updateCourseRelation(input){
+    this.covidService.updateCourseRelation(input).subscribe(response=>{
+      console.log(response);
+      alert("You have been Successfully enrolled for this course!");
+  
+    }, error=>{
+      alert(error.error);
+  
+    });
+
+  }
+     
+
+
 
 }

@@ -12,6 +12,9 @@ import { LandingComponent } from './landing/landing.component';
 import { SearchComponent } from './search/search.component';
 import { TrackComponent } from './track/track.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './login/login.component';
+import { EnrollComponent } from './enroll/enroll.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +22,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ScheduleLecturesComponent,
     NavigationComponent,
     SearchComponent,
-    TrackComponent
+    TrackComponent,
+    LoginComponent,
+    EnrollComponent
   ],
   imports: [
     BrowserModule,
@@ -29,8 +34,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RouterModule.forRoot([
       {path: '', component: LandingComponent },
       {path: 'schedule', component: ScheduleLecturesComponent },
-      {path: 'login', component: DashboardComponent },
+      {path: 'login', component: LoginComponent },
       {path: 'search', component: SearchComponent},
+      {path: 'enroll', component: EnrollComponent}
+
 
     ]),
     NgbModule
