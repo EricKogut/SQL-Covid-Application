@@ -49,7 +49,7 @@ router.post('/lecture/add', (req,res,next)=>{
 
     let data  = [req.body.lectureID, req.body.startTime, req.body.endTime, req.body.courseID, req.body.classroomNumber];
 
-    connection.query('INSERT INTO Lecture (lectureID, startTime, endTime, courseID,classroomNumber SET (?,?,?,?,?)',
+    connection.query('INSERT INTO Lecture (lectureID, startTime, endTime, courseID,classroomNumber) VALUES (?,?,?,?,?)',
     data, 
     function (err, rows, fields) {
         !err ? res.send(rows) : res.json(err);
