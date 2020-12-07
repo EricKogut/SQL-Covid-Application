@@ -27,11 +27,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
+      {path: '', component: LandingComponent },
       {path: 'schedule', component: ScheduleLecturesComponent },
       {path: 'login', component: DashboardComponent },
       {path: 'search', component: SearchComponent},
-      {path: 'home', component: LandingComponent },
-      {path: 'track', component: TrackComponent}
 
     ]),
     NgbModule

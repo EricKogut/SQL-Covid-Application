@@ -27,4 +27,15 @@ export class CovidService {
     return this.http.get<any[]>(baseUrl+"/api/search/courseName/"+ courseName);
   };
 
+  //inserting a new lecture 
+  insertLecture(lectureID:string, startTime: string, endTime: string, courseID: string, classroomNumber: string){
+  return this.http.post(baseUrl+'/api/lecture/add', {
+    "lectureID": lectureID,
+    "startTime": startTime,
+     "endTime": endTime,
+    "courseID": courseID,
+     "classroomNumber": classroomNumber
+  })
+  };
+
 }
