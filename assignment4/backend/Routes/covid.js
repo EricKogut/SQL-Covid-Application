@@ -320,6 +320,25 @@ router.get('/search/courseName/:courseName', (req,res)=>{
 });
 
 
+router.get('/signin', (req, res) => {
+
+
+    connection.connect((error)=>{
+        if(!error){
+            console.log("Database Connected!");
+        }else{
+            console.log("Connection to Database failed \n Error: " + JSON.stringify(error,undefined,2));
+        }
+    });
+
+    connection.query(`SELECT studentEmail FROM Student WHERE studentEmail = ? AND lName = ?`,[req.query.email, req.query.lastName],
+    function (err, rows, fields) {
+        !err ? res.send(rows) : res.json(err);
+      });
+       
+   // connection.end();
+     });
+
 
 
 

@@ -10,13 +10,16 @@ import { NavigationComponent } from './navigation/navigation.component';
 import {RouterModule } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
 import { SearchComponent } from './search/search.component';
+import { TrackComponent } from './track/track.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     ScheduleLecturesComponent,
     NavigationComponent,
-    SearchComponent
+    SearchComponent,
+    TrackComponent
   ],
   imports: [
     BrowserModule,
@@ -28,8 +31,10 @@ import { SearchComponent } from './search/search.component';
       {path: 'login', component: DashboardComponent },
       {path: 'search', component: SearchComponent},
       {path: 'home', component: LandingComponent },
+      {path: 'track', component: TrackComponent}
 
-    ])
+    ]),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

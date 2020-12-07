@@ -1,6 +1,55 @@
-<h2>Schedule Lectures!</h2>
 
-<h3>Please enter the number of seats required for the lecture here below:</h3>
+
+
+<div class="container">
+   
+<h2>Schedule Lecture</h2>
+
+<div class="container">
+  
+    <div class="row">
+      <div class="col-sm">
+       
+        
+        <form>
+            <ngb-timepicker [(ngModel)]="startTime" [seconds]="seconds" (focus)="d.open()"></ngb-timepicker>
+            <h4> Enter lecture information below: </h4>
+            <div class="mb-3">
+              <label  class="form-label">Start Time:</label>
+             
+              <!-- <input [(ngModel)] = "startTime" type="text" placeholder="Lecture Start Time" class="form-control" id="startTime"> -->
+            </div>
+            <div class="mb-3">
+              <label  class="form-label">End Time:</label>
+              <input [(ngModel)] = "endTime" type="text" placeholder="Lecture End Time"  class="form-control" id="endTime">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">LectureID:</label>
+                <input type="password" class="form-control" id="">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">CourseID:</label>
+                <input type="password" class="form-control" id="">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Number of Seats Required:</label>
+                <input type="password" class="form-control" id="">
+              </div>
+        
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      </div>
+      <div class="col-sm">
+        One of three columns
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
 <div>
     <h4> Please enter the lecture information here: </h4>
     <label>Start Time: </label>
@@ -31,3 +80,5 @@
              <li><button>Schedule at this class!</button></li> 
         </ul>
     </div>
+
+</div>
