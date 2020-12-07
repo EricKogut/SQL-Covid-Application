@@ -78,7 +78,6 @@ router.post('/lecture/add', (req,res,next)=>{
 });
 
 //GET a list of all the courses along with their information in which students can enroll 
-//Created a view called StudentPerCourse by joining Course, Lecture and Classroom 
 router.get('/available', (req,res)=>{
     connection.connect((error)=>{
         if(!error){
@@ -97,11 +96,46 @@ router.get('/available', (req,res)=>{
 });
 
 //POST for updating enrollment and courses 
+// Insert User info into the Enrollment relation
+router.post('/course/add', (req,res,next)=>{
+    connection.connect((error)=>{
+        if(!error){
+            console.log("Database Connected!");
+        }else{
+            console.log("Connection to Database failed \n Error: " + JSON.stringify(error,undefined,2));
+        }
+    });
 
-// numberOfStudents++
+    let data  = [req.body.courseID, req.body.studentEmail ,1];
 
+    connection.query('INSERT INTO Enrollment (courseID, studentEmail, currentlyEnrolled) VALUES (?,?,?)',
+    data, 
+    function (err, rows, fields) {
+        !err ? res.send(rows) : res.json(err);
+      });
+  
+    
+});
 
+  // numberOfStudents++ in Course Relation 
+    router.put('/course/increment/:courseID', (req,res,next)=>{
+    connection.connect((error)=>{
+        if(!error){
+            console.log("Database Connected!");
+        }else{
+            console.log("Connection to Database failed \n Error: " + JSON.stringify(error,undefined,2));
+        }
+    });
 
+    const queryString = 'UPDATE Course SET numberOfStudents = numberOfStudents + 1 WHERE courseID = ? '
+
+    connection.query(queryString,[req.params.courseID], 
+    function (err, rows, fields) {
+        !err ? res.send(rows) : res.json(err);
+      });
+  
+    
+});
 
 
 
