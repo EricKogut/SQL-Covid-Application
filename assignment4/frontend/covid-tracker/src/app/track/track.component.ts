@@ -21,15 +21,15 @@ export class TrackComponent implements OnInit {
 
   getCoincidence(): void {
     this.common = [];
-    this.covidService.getCoincidence('PetitY899@uwo.ca', this.name.value).subscribe((x) => { this.common = x })
+    this.covidService.getCoincidence(localStorage.getItem('email'), this.name.value).subscribe((x) => { this.common = x })
   }
 
   report(): void {
-    this.covidService.reportCase('Abbott@uwo.ca').subscribe((x) => { this.response = x }, null, () => { console.log(this.response) });
+    this.covidService.reportCase(localStorage.getItem('email')).subscribe((x) => { this.response = x }, null, () => { console.log(this.response) });
   }
 
   getNotifications(): void {
-    this.covidService.getNotifications('Abbott@uwo.ca').subscribe((x) => { this.notifications = x}, null, () => {console.log(this.notifications)});
+    this.covidService.getNotifications(localStorage.getItem('email')).subscribe((x) => { this.notifications = x}, null, () => {console.log(this.notifications)});
   }
 
 
