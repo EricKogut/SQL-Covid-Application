@@ -27,7 +27,7 @@ export class CovidService {
     return this.http.get<any[]>(baseUrl+"/api/search/courseName/"+ courseName);
   };
 
-  //inserting a new lecture
+  //inserting a new lecture 
   insertLecture(lectureID:string, startTime: string, endTime: string, courseID: string, classroomNumber: string){
   return this.http.post(baseUrl+'/api/lecture/add', {
     "lectureID": lectureID,
@@ -41,5 +41,33 @@ export class CovidService {
     return this.http.put<any[]>(baseUrl+"/api/signin/",input);
 
   }
+
+  //get course for enrollment 
+  getCoursesForEnroll(){
+    return this.http.get<any[]>(baseUrl+"/api/available");
+
+  };
+
+  enrollForThisCourse(courseID: string, studentEmail: string){
+    return this.http.post(baseUrl+'/api/course/add',{
+      "courseID": courseID,
+      "studentEmail": studentEmail
+
+    });
+  };
+
+  checkIfAlreadyEnrolled(courseID: string, studentEmail: string){
+    return this.http.post(baseUrl+'/api/enrollment/check',{
+      "courseID": courseID,
+      "studentEmail": studentEmail
+
+    });
+  };
+
+  updateCourseRelation(courseID: string){
+   
+    return this.http.put(baseUrl+'/api/course/increment/'+ courseID,{});
+
+  };
 
 }

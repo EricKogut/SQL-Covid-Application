@@ -11,6 +11,7 @@ import {RouterModule } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
 import { SearchComponent } from './search/search.component';
 import { LoginComponent } from './login/login.component';
+import { EnrollComponent } from './enroll/enroll.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,8 @@ import { LoginComponent } from './login/login.component';
     ScheduleLecturesComponent,
     NavigationComponent,
     SearchComponent,
-    LoginComponent
+    LoginComponent,
+    EnrollComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,8 @@ import { LoginComponent } from './login/login.component';
       {path: 'schedule', component: ScheduleLecturesComponent },
       {path: 'login', component: LoginComponent },
       {path: 'search', component: SearchComponent},
+      {path: 'enroll', component: EnrollComponent}
+
 
 
     ])
