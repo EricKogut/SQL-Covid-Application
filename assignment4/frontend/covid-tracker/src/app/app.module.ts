@@ -10,6 +10,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import {RouterModule } from '@angular/router';
 import { SearchComponent } from './search/search.component';
 import { TrackComponent } from './track/track.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TrackComponent } from './track/track.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {path: 'schedule', component: ScheduleLecturesComponent },
       {path: 'login', component: DashboardComponent },

@@ -1,1 +1,10 @@
 <p>track works!</p>
+
+<label>
+    User:
+    <input type="text" [formControl]="name">
+</label>
+
+<div *ngIf="response">
+    {{ response }}
+</div>

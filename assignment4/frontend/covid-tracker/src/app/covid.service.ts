@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of} from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { pipe } from 'rxjs/index';
+
 const baseUrl = 'http://localhost:3000';
 @Injectable({
   providedIn: 'root'
@@ -28,11 +32,21 @@ export class CovidService {
   };
 
   reportCase(email: string) {
-    return this.http.post<any[]>(baseUrl + "/api/case/" + email, null);
+    return this.http.post<string>(baseUrl + "/api/case/" + email, null).pipe(
+      catchError(this.handleError('POST Case', ""))
+    )
   }
 
   getCoincidence(email: string, compareTo: string) {
     return this.http.get<any[]>(baseUrl + "/api/coincidence/" + email + "/" + compareTo);
+  }
+
+  handleError<T>(operation = "operation", result?: T) {
+    return (err: any): Observable<T> => {
+      console.warn(err);
+
+      return of(result as T);
+    }
   }
 
 }

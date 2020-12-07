@@ -109,7 +109,7 @@ router.post('/case/:name', (req, res) => {
     })
   })
 
-  res.send(added.length);
+  res.send(`${added.length}`);
 
   })
 })
