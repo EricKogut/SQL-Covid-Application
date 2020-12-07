@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const connection = require('./connection');
 
-router.get('/coincidence/:self/:user', () => {
+router.get('/coincidence/:self/:user', (req, _) => {
   const connection = mysql.createConnection({
     /* Avoid a lot of errors by creating a connection local to function */
       host: 'project-3309.c0vk0iwpo9it.us-east-2.rds.amazonaws.com',
@@ -12,14 +12,25 @@ router.get('/coincidence/:self/:user', () => {
       database: '3309'
     });
 
-    const self = req.params.self;
-    const user = req.params.user;
+    const you = req.params.self;
+    const them = req.params.user;
 
     connection.connect();
 
-    connection.query(`SELECT `, (err, rows, fields) => {
+    connection.query(`CREATE VIEW A AS SELECT courseID FROM Enrollment WHERE studentEmail = '${you}'`);
+    connection.query(`CREATE VIEW B AS SELECT courseID FROM Enrollment WHERE studentEmail = '${them}'`);
 
-    })
+    connection.query(`SELECT * FROM A INNER JOIN B ON A.courseID = B.courseID`, (err, rows, fields) => {
+        if (err) {
+          connection.query(`DROP VIEW A`);
+          connection.query(`DROP VIEW B`);
+          return;
+        }
+      res.send(rows);
+    });
+
+    connection.query(`DROP VIEW A`);
+    connection.query(`DROP VIEW B`);
 })
 
 /* name = UWO Email in Student relation */
