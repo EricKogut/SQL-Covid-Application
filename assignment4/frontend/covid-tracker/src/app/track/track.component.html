@@ -13,7 +13,7 @@
     <div class="col-sm">
 
 
-        <button class="push-button2-3d" (click)="getNotifications()">
+        <button class="push-button2-3d" (click)="getNotifications()" >
             See Notifications
           </button>
           
@@ -34,7 +34,7 @@
             User:
             <input type="text" [formControl]="name" />
           </label>
-          <button class="push-button2-3d" (click)="getCoincidence()">
+          <button class="push-button2-3d" (click)="getCoincidence()"[disabled]="!name.valid">
             Get Coincidence with {{ name.value }}
           </button>
           
