@@ -42,7 +42,7 @@ import { EnrollComponent } from './enroll/enroll.component';
       {path: 'track', component: TrackComponent},
       {path: 'enroll', component: EnrollComponent}
     ]),
-    NgbModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
