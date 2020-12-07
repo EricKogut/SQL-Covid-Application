@@ -77,7 +77,7 @@ router.post('/lecture/add', (req,res,next)=>{
       });
 });
 
-//GET a list of all the courses in which students can enroll 
+//GET a list of all the courses along with their information in which students can enroll 
 //Created a view called StudentPerCourse by joining Course, Lecture and Classroom 
 router.get('/available', (req,res)=>{
     connection.connect((error)=>{
@@ -88,7 +88,9 @@ router.get('/available', (req,res)=>{
         }
     });
 
-    connection.query('SELECT * FROM StudentPerCourse WHERE numberOfSeats>=numberOfStudents', function (err, rows, fields) {
+    const queryString = 'SELECT C.courseName, C.description, C.numberOfStudents, Cl.numberOfSeats, L.startTime, L.endTime FROM Course C JOIN Lecture L ON C.courseID = L.courseID JOIN Classroom Cl ON L.classroomNumber = Cl.roomNumber WHERE Cl.numberOfSeats>=C.numberOfStudents';
+
+    connection.query(queryString, function (err, rows, fields) {
         !err ? res.send(rows) : res.json(err);
         })
 
