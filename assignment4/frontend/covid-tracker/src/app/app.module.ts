@@ -10,8 +10,11 @@ import { NavigationComponent } from './navigation/navigation.component';
 import {RouterModule } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
 import { SearchComponent } from './search/search.component';
+import { TrackComponent } from './track/track.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { EnrollComponent } from './enroll/enroll.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +22,7 @@ import { EnrollComponent } from './enroll/enroll.component';
     ScheduleLecturesComponent,
     NavigationComponent,
     SearchComponent,
+    TrackComponent,
     LoginComponent,
     EnrollComponent
   ],
@@ -35,8 +39,8 @@ import { EnrollComponent } from './enroll/enroll.component';
       {path: 'enroll', component: EnrollComponent}
 
 
-
-    ])
+    ]),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
