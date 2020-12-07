@@ -28,7 +28,7 @@ export class CovidService {
   };
 
   reportCase(email: string) {
-    return this.http.get<any[]>(baseUrl + "/api/case/" + email);
+    return this.http.post<any[]>(baseUrl + "/api/case/" + email, null);
   }
 
   getCoincidence(email: string, compareTo: string) {
