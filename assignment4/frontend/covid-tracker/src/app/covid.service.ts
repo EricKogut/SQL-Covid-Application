@@ -27,7 +27,9 @@ export class CovidService {
 
   //get search results by courseID
   getSearchResultsCourseID(courseID: string){
-    return this.http.get<any[]>(baseUrl+"/api/search/courseID/"+ courseID);
+    return this.http.get<any[]>(baseUrl+"/api/search/courseID/"+ courseID).pipe(
+      catchError(this.handleError('GET Search Results', []))
+    );
   };
 
   //get search results by courseID
