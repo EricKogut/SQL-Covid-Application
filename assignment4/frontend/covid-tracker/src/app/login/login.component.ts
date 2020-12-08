@@ -26,7 +26,9 @@ export class LoginComponent implements OnInit {
         console.log("the result of the sign in is", result)
         if(result.length==0){
           window.alert("Wrong username password combo")
-        } 
+        } else if(!/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(this.email)){
+          window.alert("Invalid email pattern")
+        }
         else{
           console.log("SETTING THE LOGGED IN TO TRUE")
           localStorage.setItem("isLoggedIn", "true")
