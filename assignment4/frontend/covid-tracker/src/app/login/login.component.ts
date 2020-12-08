@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
         console.log("the result of the sign in is", result)
         if(result.length==0){
           window.alert("Wrong username password combo")
-        }
+        } 
         else{
           console.log("SETTING THE LOGGED IN TO TRUE")
           localStorage.setItem("isLoggedIn", "true")

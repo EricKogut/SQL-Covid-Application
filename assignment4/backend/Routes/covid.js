@@ -108,7 +108,7 @@ router.post('/case/:name', (req, res) => {
       if (rows) {
         result = Object.values(rows[0])[0] ? Object.values(rows[0])[0] : 0; // Number or null
       }
-        connection.query(`INSERT INTO Notification VALUES (${result + 1}, '${name}', 'You have been in contact with a COVID case reported on ${date}}')`)
+        connection.query(`INSERT INTO Notification VALUES (${result + 1}, '${name}', 'You have been in contact with a COVID case reported on ${date}')`)
     })
   })
 
