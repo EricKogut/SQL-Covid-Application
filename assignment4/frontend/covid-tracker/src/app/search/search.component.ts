@@ -24,6 +24,14 @@ export class SearchComponent implements OnInit {
 
 
   getSearchResults(){
+    var numbers = /^[0-9]+$/;
+
+    if(this.courseID.match(numbers)){}
+    else{
+      alert("Error! only numbers allowed!");
+      return;
+    }
+
     if(this.courseName == ''){
       //get search results by courseID
       this.covidService.getSearchResultsCourseID(this.courseID).subscribe(response=>{
